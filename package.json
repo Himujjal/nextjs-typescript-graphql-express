@@ -4,11 +4,21 @@
   "description": "A Simple Boilerplate for running NextJs + ExpressJS + TypeScript + GraphQL/Apollo with support for Jest and Storybook",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "lint:ts": "tslint 'pages/**/*.{ts,tsx,js}'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "storybook": "start-storybook -p 6006 -c .storybook"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Himujjal/nextjs-typescript-graphql-express.git"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   },
   "keywords": [
     "nextjs",
@@ -22,11 +32,40 @@
     "storybook",
     "boilerplate",
     "redux"
-  ],
+  ],  
   "author": "Himujjal",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Himujjal/nextjs-typescript-graphql-express/issues"
   },
-  "homepage": "https://github.com/Himujjal/nextjs-typescript-graphql-express#readme"
+  "homepage": "https://github.com/Himujjal/nextjs-typescript-graphql-express#readme",
+  "dependencies": {
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.1.1",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "devDependencies": {
+    "@storybook/react": "^5.2.5",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.19",
+    "@types/node": "^12.11.2",
+    "@types/react": "^16.9.9",
+    "@types/storybook__react": "^4.0.2",
+    "awesome-typescript-loader": "^5.2.1",
+    "cross-env": "^6.0.3",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "jsdom": "15.2.0",
+    "jsdom-global": "3.0.2",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.1.0",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^4.1.0",
+    "typescript": "^3.6.4"
+  }
 }
