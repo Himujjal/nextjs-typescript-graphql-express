@@ -8,7 +8,10 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -26,6 +29,10 @@
     "pages/**/*.ts",
     "pages/**/*.tsx",
     "components/**/*.tsx",
-    "components/**/*.ts"
+    "components/**/*.ts",
+    "lib/*.ts",
+    "lib/*.tsx",
+    "lib/**/*.tsx",
+    "lib/**/*.ts"
   ]
 }
