@@ -41,7 +41,7 @@
     ],
     "no-arg": true,
     "no-bitwise": true,
-    "no-console": true,
+    "no-console": false,
     "no-construct": true,
     "no-debugger": true,
     "no-duplicate-super": true,
@@ -118,15 +118,12 @@
       }
     ],
     "linebreak-style": [
-      true,
+      false,
       "LF"
     ],
     "typedef": [
       true,
-      "call-signature",
       "parameter",
-      "arrow-call-signature",
-      "arrow-parameter",
       "property-declaration"
     ],
     "no-consecutive-blank-lines": true

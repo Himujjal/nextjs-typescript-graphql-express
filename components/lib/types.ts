@@ -1,11 +1,11 @@
 export interface IOptions {
-  getToken: () => string;
+	getToken: () => string;
 }
 
 export interface ICookieHeader extends Headers {
-  cookie: string;
+	cookie: string;
 }
 
 export interface IRequestWithCookie extends Request {
-  headers: ICookieHeader;
+	headers: ICookieHeader;
 }
