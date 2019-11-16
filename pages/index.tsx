@@ -1,44 +1,45 @@
-import { gql } from 'apollo-boost';
-import Link from 'next/link';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 import * as React from 'react';
-import { Mutation, MutationFunction } from 'react-apollo';
-import Layout from '../components/pagewise/Layout';
+import { BooksQuery } from '../__generated__/BooksQuery';
+import { connect } from 'react-redux';
+import withApollo from '../lib/withApollo';
 
-const gqlQuery = gql`
-	mutation {
-		login(email: "test@test.com", password: "qqq") {
-			id
-			firstName
-			lastName
-			email
-			name
+const booksQuery = gql`
+	query BooksQuery {
+		books {
+			title
+			author
 		}
 	}
 `;
 
-const IndexPage: React.FunctionComponent = () => {
-	return (
-		<Layout title="Home | Next.js + TypeScript Example">
-			<h1>hello Next.js 👋</h1>
-			<p>
-				<Link href="/about">
-					<a>About</a>
-				</Link>
-			</p>
-			<Mutation mutation={gqlQuery}>
-				{(mutate: MutationFunction) => (
-					<button
-						onClick={async () => {
-							const response = await mutate();
-							console.log(response);
-						}}
-					>
-						call login mutation
-					</button>
-				)}
-			</Mutation>
-		</Layout>
-	);
-};
+class BookList extends React.Component<{}, {}> {
+	render() {
+		return (
+			<Query<BooksQuery> query={booksQuery}>
+				{({ loading, error, data }) => {
+					if (error) return <div>{JSON.stringify(error)}</div>;
+					if (loading) return <div>Loading</div>;
+					if (!data) return <div>Loading</div>;
 
-export default IndexPage;
+					return (
+						<section>
+							<ul>
+								{data.books.map((book, index) => (
+									<li key={book.title}>
+										<span>{index + 1}. </span>
+										<div>{book.title}</div>
+										<div>{book.author}</div>
+									</li>
+								))}
+							</ul>
+						</section>
+					);
+				}}
+			</Query>
+		);
+	}
+}
+
+export default BookList;
